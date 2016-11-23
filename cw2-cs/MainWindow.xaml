@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Button x:Name="ADD_Booking_btn" Content="Add Booking" HorizontalAlignment="Left" Height="45" Margin="81,115,0,0" VerticalAlignment="Top" Width="94" Click="ADD_Booking_btn_Click"/>
+        <Button x:Name="AMEND_Booking_btn" Content="Amend Booking" HorizontalAlignment="Left" Height="45" Margin="81,215,0,0" VerticalAlignment="Top" Width="94" Click="AMEND_Booking_btn_Click"/>
+        <Button x:Name="DELETE_Booking_btn" Content="Delete Booking" HorizontalAlignment="Left" Height="45" Margin="81,165,0,0" VerticalAlignment="Top" Width="94" Click="DELETE_Booking_btn_Click"/>
+        <Button x:Name="INVOICE_btn" Content="Invoice" HorizontalAlignment="Left" Height="45" Margin="81,265,0,0" VerticalAlignment="Top" Width="94" Click="INVOICE_btn_Click"/>
+        <Button x:Name="ADD_Customer_btn" Content="Add Customer" HorizontalAlignment="Left" Height="45" Margin="81,65,0,0" VerticalAlignment="Top" Width="94" Click="ADD_Customer_btn_Click"/>
+
     </Grid>
 </Window>

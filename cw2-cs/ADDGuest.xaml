@@ -1,0 +1,28 @@
+﻿<Window x:Class="cw2_cs.ADDGuest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:cw2_cs"
+        mc:Ignorable="d"
+        Title="ADDGuest" Height="300" Width="300">
+    <Grid>
+        <TextBox x:Name="Gus_Name_txtbx" HorizontalAlignment="Left" Height="25" Margin="164,21,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Gus_Name_lbl" Content="Guest Name: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,21,0,0" Height="29" Width="94"/>
+        <Label x:Name="Gus_Pass_Num_lbl" Content="Guest Passport Number: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,51,0,0" Height="30" Width="139"/>
+        <Label x:Name="Gus_Age_lbl" Content="Guest Age: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,86,0,0" Height="25" Width="94"/>
+        <TextBox x:Name="Gus_Age_txtbx" HorizontalAlignment="Left" Height="25" Margin="164,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Gus_Pass_Num_txtbx" HorizontalAlignment="Left" Height="25" Margin="164,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Gus_Dietry_Requirements_lbl" Content="Guest Dietry Requirements: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,116,0,0" Height="25" Width="154"/>
+        <TextBox x:Name="Gus_Dietry_Requiements_txtbx" HorizontalAlignment="Left" Height="25" Margin="164,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Gus_Breakfast_lbl" Content="Having Breakfast?" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,146,0,0" Height="25" Width="110"/>
+        <TextBox x:Name="Gus_Breakfast_txtbx" HorizontalAlignment="Left" Height="25" Margin="164,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Gus_Breakfast_no_of_days_lbl" Content="No. of Days: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,166,0,0" Height="25" Width="82"/>
+        <ComboBox x:Name="Breakfast_no_of_days_cmbobx" HorizontalAlignment="Left" Height="24" Margin="164,166,0,0" VerticalAlignment="Top" Width="62"/>
+        <Label x:Name="Gus_Dinner_lbl" Content="Having Dinner?" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,195,0,0" Height="25" Width="110"/>
+        <TextBox x:Name="Gus_Dinner_txtbx" HorizontalAlignment="Left" Height="25" Margin="164,195,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Gus_Dinner_no_of_days_lbl" Content="No. of Days: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="83,220,0,0" Height="25" Width="82"/>
+        <ComboBox x:Name="Dinner_no_of_days_cmbobx" HorizontalAlignment="Left" Margin="165,220,0,0" VerticalAlignment="Top" Width="61"/>
+
+    </Grid>
+</Window>

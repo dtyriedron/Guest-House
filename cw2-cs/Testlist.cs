@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace cw2_cs
 {
@@ -28,13 +29,8 @@ namespace cw2_cs
         private void LoadData()
         {
             {
-                string sql = " SELECT * FROM guest  ";
-                MySqlConnection con = new MySqlConnection("server=socweb8.napier.ac.uk;uid=40203045;password=5fako1xe8;database=40203045;");
-                MySqlCommand cmd = new MySqlCommand(sql, con);
 
-                con.Open();
-
-                MySqlDataReader reader = cmd.ExecuteReader();
+                
 
             }
         }

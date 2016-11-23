@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace cw2_cs
 {
@@ -10,7 +11,6 @@ namespace cw2_cs
     {
         private string booking_date;
         private string date_leaving;
-        private int nights;
         private int booking_ref;
 
         public string Booking_Date
@@ -37,19 +37,6 @@ namespace cw2_cs
             {
                 //show error
                 date_leaving = value;
-            }
-        }
-
-        public int Nights
-        {
-            get
-            {
-                return nights;
-            }
-            set
-            {
-                //show error message
-                nights = value;
             }
         }
 
