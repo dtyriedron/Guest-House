@@ -362,8 +362,6 @@ namespace cw2_cs {
             
             private global::System.Data.DataColumn columnDate_Leaving;
             
-            private global::System.Data.DataColumn columnnights;
-            
             private global::System.Data.DataColumn columnCustomer_id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -425,14 +423,6 @@ namespace cw2_cs {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn nightsColumn {
-                get {
-                    return this.columnnights;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn Customer_idColumn {
                 get {
                     return this.columnCustomer_id;
@@ -476,16 +466,15 @@ namespace cw2_cs {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BookingRow AddBookingRow(int BookingRef, System.DateTime Booking_Date, System.DateTime Date_Leaving, int nights, CustomerRow parentCustomerRowByFK_Booking_ToTable) {
+            public BookingRow AddBookingRow(System.DateTime Booking_Date, System.DateTime Date_Leaving, CustomerRow parentCustomerRowByFK_Booking_ToTable) {
                 BookingRow rowBookingRow = ((BookingRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        BookingRef,
+                        null,
                         Booking_Date,
                         Date_Leaving,
-                        nights,
                         null};
                 if ((parentCustomerRowByFK_Booking_ToTable != null)) {
-                    columnValuesArray[4] = parentCustomerRowByFK_Booking_ToTable[0];
+                    columnValuesArray[3] = parentCustomerRowByFK_Booking_ToTable[0];
                 }
                 rowBookingRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBookingRow);
@@ -519,7 +508,6 @@ namespace cw2_cs {
                 this.columnBookingRef = base.Columns["BookingRef"];
                 this.columnBooking_Date = base.Columns["Booking_Date"];
                 this.columnDate_Leaving = base.Columns["Date_Leaving"];
-                this.columnnights = base.Columns["nights"];
                 this.columnCustomer_id = base.Columns["Customer_id"];
             }
             
@@ -532,15 +520,16 @@ namespace cw2_cs {
                 base.Columns.Add(this.columnBooking_Date);
                 this.columnDate_Leaving = new global::System.Data.DataColumn("Date_Leaving", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate_Leaving);
-                this.columnnights = new global::System.Data.DataColumn("nights", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnights);
                 this.columnCustomer_id = new global::System.Data.DataColumn("Customer_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCustomer_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnBookingRef}, true));
+                this.columnBookingRef.AutoIncrement = true;
+                this.columnBookingRef.AutoIncrementSeed = -1;
+                this.columnBookingRef.AutoIncrementStep = -1;
                 this.columnBookingRef.AllowDBNull = false;
+                this.columnBookingRef.ReadOnly = true;
                 this.columnBookingRef.Unique = true;
-                this.columnnights.AllowDBNull = false;
                 this.columnCustomer_id.AllowDBNull = false;
             }
             
@@ -775,10 +764,10 @@ namespace cw2_cs {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CustomerRow AddCustomerRow(int Cus_Ref, string Cus_Address, string Cus_Name) {
+            public CustomerRow AddCustomerRow(string Cus_Address, string Cus_Name) {
                 CustomerRow rowCustomerRow = ((CustomerRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Cus_Ref,
+                        null,
                         Cus_Address,
                         Cus_Name};
                 rowCustomerRow.ItemArray = columnValuesArray;
@@ -826,7 +815,11 @@ namespace cw2_cs {
                 base.Columns.Add(this.columnCus_Name);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCus_Ref}, true));
+                this.columnCus_Ref.AutoIncrement = true;
+                this.columnCus_Ref.AutoIncrementSeed = -1;
+                this.columnCus_Ref.AutoIncrementStep = -1;
                 this.columnCus_Ref.AllowDBNull = false;
+                this.columnCus_Ref.ReadOnly = true;
                 this.columnCus_Ref.Unique = true;
                 this.columnCus_Address.AllowDBNull = false;
                 this.columnCus_Address.MaxLength = 50;
@@ -1307,17 +1300,6 @@ namespace cw2_cs {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int nights {
-                get {
-                    return ((int)(this[this.tableBooking.nightsColumn]));
-                }
-                set {
-                    this[this.tableBooking.nightsColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Customer_id {
                 get {
                     return ((int)(this[this.tableBooking.Customer_idColumn]));
@@ -1700,56 +1682,50 @@ namespace cw2_cs.sampledatabaseDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("BookingRef", "BookingRef");
             tableMapping.ColumnMappings.Add("Booking_Date", "Booking_Date");
             tableMapping.ColumnMappings.Add("Date_Leaving", "Date_Leaving");
-            tableMapping.ColumnMappings.Add("nights", "nights");
             tableMapping.ColumnMappings.Add("Customer_id", "Customer_id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Booking] WHERE (([BookingRef] = @Original_BookingRef) AND ((@IsNull_Booking_Date = 1 AND [Booking_Date] IS NULL) OR ([Booking_Date] = @Original_Booking_Date)) AND ((@IsNull_Date_Leaving = 1 AND [Date_Leaving] IS NULL) OR ([Date_Leaving] = @Original_Date_Leaving)) AND ([nights] = @Original_nights) AND ([Customer_id] = @Original_Customer_id))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Booking] WHERE (([BookingRef] = @Original_BookingRef) AND ((@IsNull_Booking_Date = 1 AND [Booking_Date] IS NULL) OR ([Booking_Date] = @Original_Booking_Date)) AND ((@IsNull_Date_Leaving = 1 AND [Date_Leaving] IS NULL) OR ([Date_Leaving] = @Original_Date_Leaving)) AND ([Customer_id] = @Original_Customer_id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BookingRef", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookingRef", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Booking_Date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Booking_Date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Booking_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Booking_Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Date_Leaving", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date_Leaving", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date_Leaving", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date_Leaving", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nights", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nights", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Customer_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Customer_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Booking] ([BookingRef], [Booking_Date], [Date_Leaving], [nights], [Customer_id]) VALUES (@BookingRef, @Booking_Date, @Date_Leaving, @nights, @Customer_id);
-SELECT BookingRef, Booking_Date, Date_Leaving, nights, Customer_id FROM Booking WHERE (BookingRef = @BookingRef)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Booking] ([Booking_Date], [Date_Leaving], [Customer_id]) VALUE" +
+                "S (@Booking_Date, @Date_Leaving, @Customer_id);\r\nSELECT BookingRef, Booking_Date" +
+                ", Date_Leaving, Customer_id FROM Booking WHERE (BookingRef = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BookingRef", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookingRef", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Booking_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Booking_Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date_Leaving", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date_Leaving", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nights", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nights", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Customer_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Customer_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Booking] SET [BookingRef] = @BookingRef, [Booking_Date] = @Booking_Date, [Date_Leaving] = @Date_Leaving, [nights] = @nights, [Customer_id] = @Customer_id WHERE (([BookingRef] = @Original_BookingRef) AND ((@IsNull_Booking_Date = 1 AND [Booking_Date] IS NULL) OR ([Booking_Date] = @Original_Booking_Date)) AND ((@IsNull_Date_Leaving = 1 AND [Date_Leaving] IS NULL) OR ([Date_Leaving] = @Original_Date_Leaving)) AND ([nights] = @Original_nights) AND ([Customer_id] = @Original_Customer_id));
-SELECT BookingRef, Booking_Date, Date_Leaving, nights, Customer_id FROM Booking WHERE (BookingRef = @BookingRef)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Booking] SET [Booking_Date] = @Booking_Date, [Date_Leaving] = @Date_Leaving, [Customer_id] = @Customer_id WHERE (([BookingRef] = @Original_BookingRef) AND ((@IsNull_Booking_Date = 1 AND [Booking_Date] IS NULL) OR ([Booking_Date] = @Original_Booking_Date)) AND ((@IsNull_Date_Leaving = 1 AND [Date_Leaving] IS NULL) OR ([Date_Leaving] = @Original_Date_Leaving)) AND ([Customer_id] = @Original_Customer_id));
+SELECT BookingRef, Booking_Date, Date_Leaving, Customer_id FROM Booking WHERE (BookingRef = @BookingRef)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BookingRef", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookingRef", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Booking_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Booking_Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date_Leaving", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date_Leaving", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nights", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nights", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Customer_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Customer_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BookingRef", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookingRef", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Booking_Date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Booking_Date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Booking_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Booking_Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Date_Leaving", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date_Leaving", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date_Leaving", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date_Leaving", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nights", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nights", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Customer_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Customer_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BookingRef", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "BookingRef", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\dtd2509\\Documents\\V" +
-                "isual Studio 2015\\Projects\\cw2-csharp-db\\cw2-csharp-db\\sampledatabase.mdf\";Integ" +
-                "rated Security=True;Connect Timeout=30";
+            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\bin\\Debug\\sam" +
+                "pledatabase.mdf;Integrated Security=True;Connect Timeout=30";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1758,8 +1734,7 @@ SELECT BookingRef, Booking_Date, Date_Leaving, nights, Customer_id FROM Booking 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT BookingRef, Booking_Date, Date_Leaving, nights, Customer_id FROM dbo.Booki" +
-                "ng";
+            this._commandCollection[0].CommandText = "SELECT BookingRef, Booking_Date, Date_Leaving, Customer_id FROM dbo.Booking";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1820,7 +1795,7 @@ SELECT BookingRef, Booking_Date, Date_Leaving, nights, Customer_id FROM Booking 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_BookingRef, global::System.Nullable<global::System.DateTime> Original_Booking_Date, global::System.Nullable<global::System.DateTime> Original_Date_Leaving, int Original_nights, int Original_Customer_id) {
+        public virtual int Delete(int Original_BookingRef, global::System.Nullable<global::System.DateTime> Original_Booking_Date, global::System.Nullable<global::System.DateTime> Original_Date_Leaving, int Original_Customer_id) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_BookingRef));
             if ((Original_Booking_Date.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -1838,8 +1813,7 @@ SELECT BookingRef, Booking_Date, Date_Leaving, nights, Customer_id FROM Booking 
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_nights));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Customer_id));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_Customer_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1860,22 +1834,20 @@ SELECT BookingRef, Booking_Date, Date_Leaving, nights, Customer_id FROM Booking 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int BookingRef, global::System.Nullable<global::System.DateTime> Booking_Date, global::System.Nullable<global::System.DateTime> Date_Leaving, int nights, int Customer_id) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(BookingRef));
+        public virtual int Insert(global::System.Nullable<global::System.DateTime> Booking_Date, global::System.Nullable<global::System.DateTime> Date_Leaving, int Customer_id) {
             if ((Booking_Date.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(Booking_Date.Value));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(Booking_Date.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((Date_Leaving.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(Date_Leaving.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Date_Leaving.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(Date_Leaving.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(nights));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Customer_id));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Customer_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1896,41 +1868,39 @@ SELECT BookingRef, Booking_Date, Date_Leaving, nights, Customer_id FROM Booking 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int BookingRef, global::System.Nullable<global::System.DateTime> Booking_Date, global::System.Nullable<global::System.DateTime> Date_Leaving, int nights, int Customer_id, int Original_BookingRef, global::System.Nullable<global::System.DateTime> Original_Booking_Date, global::System.Nullable<global::System.DateTime> Original_Date_Leaving, int Original_nights, int Original_Customer_id) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(BookingRef));
+        public virtual int Update(global::System.Nullable<global::System.DateTime> Booking_Date, global::System.Nullable<global::System.DateTime> Date_Leaving, int Customer_id, int Original_BookingRef, global::System.Nullable<global::System.DateTime> Original_Booking_Date, global::System.Nullable<global::System.DateTime> Original_Date_Leaving, int Original_Customer_id, int BookingRef) {
             if ((Booking_Date.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(Booking_Date.Value));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(Booking_Date.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((Date_Leaving.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(Date_Leaving.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Date_Leaving.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(Date_Leaving.Value));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Customer_id));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_BookingRef));
+            if ((Original_Booking_Date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Original_Booking_Date.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(nights));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Customer_id));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_BookingRef));
-            if ((Original_Booking_Date.HasValue == true)) {
+            if ((Original_Date_Leaving.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_Booking_Date.Value));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_Date_Leaving.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((Original_Date_Leaving.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_Date_Leaving.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_nights));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Customer_id));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Customer_id));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(BookingRef));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1951,8 +1921,8 @@ SELECT BookingRef, Booking_Date, Date_Leaving, nights, Customer_id FROM Booking 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<global::System.DateTime> Booking_Date, global::System.Nullable<global::System.DateTime> Date_Leaving, int nights, int Customer_id, int Original_BookingRef, global::System.Nullable<global::System.DateTime> Original_Booking_Date, global::System.Nullable<global::System.DateTime> Original_Date_Leaving, int Original_nights, int Original_Customer_id) {
-            return this.Update(Original_BookingRef, Booking_Date, Date_Leaving, nights, Customer_id, Original_BookingRef, Original_Booking_Date, Original_Date_Leaving, Original_nights, Original_Customer_id);
+        public virtual int Update(global::System.Nullable<global::System.DateTime> Booking_Date, global::System.Nullable<global::System.DateTime> Date_Leaving, int Customer_id, int Original_BookingRef, global::System.Nullable<global::System.DateTime> Original_Booking_Date, global::System.Nullable<global::System.DateTime> Original_Date_Leaving, int Original_Customer_id) {
+            return this.Update(Booking_Date, Date_Leaving, Customer_id, Original_BookingRef, Original_Booking_Date, Original_Date_Leaving, Original_Customer_id, Original_BookingRef);
         }
     }
     
@@ -2091,33 +2061,31 @@ SELECT BookingRef, Booking_Date, Date_Leaving, nights, Customer_id FROM Booking 
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cus_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cus_Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Customer] ([Cus_Ref], [Cus_Address], [Cus_Name]) VALUES (@Cus_" +
-                "Ref, @Cus_Address, @Cus_Name);\r\nSELECT Cus_Ref, Cus_Address, Cus_Name FROM Custo" +
-                "mer WHERE (Cus_Ref = @Cus_Ref)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Customer] ([Cus_Address], [Cus_Name]) VALUES (@Cus_Address, @C" +
+                "us_Name);\r\nSELECT Cus_Ref, Cus_Address, Cus_Name FROM Customer WHERE (Cus_Ref = " +
+                "SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cus_Ref", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cus_Ref", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cus_Address", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cus_Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cus_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cus_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Customer] SET [Cus_Ref] = @Cus_Ref, [Cus_Address] = @Cus_Address, [Cus_Name] = @Cus_Name WHERE (([Cus_Ref] = @Original_Cus_Ref) AND ([Cus_Address] = @Original_Cus_Address) AND ([Cus_Name] = @Original_Cus_Name));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Customer] SET [Cus_Address] = @Cus_Address, [Cus_Name] = @Cus_Name WHERE (([Cus_Ref] = @Original_Cus_Ref) AND ([Cus_Address] = @Original_Cus_Address) AND ([Cus_Name] = @Original_Cus_Name));
 SELECT Cus_Ref, Cus_Address, Cus_Name FROM Customer WHERE (Cus_Ref = @Cus_Ref)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cus_Ref", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cus_Ref", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cus_Address", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cus_Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cus_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cus_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cus_Ref", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cus_Ref", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cus_Address", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cus_Address", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cus_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cus_Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cus_Ref", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cus_Ref", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\dtd2509\\Documents\\V" +
-                "isual Studio 2015\\Projects\\cw2-csharp-db\\cw2-csharp-db\\sampledatabase.mdf\";Integ" +
-                "rated Security=True;Connect Timeout=30";
+            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\bin\\Debug\\sam" +
+                "pledatabase.mdf;Integrated Security=True;Connect Timeout=30";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2221,19 +2189,18 @@ SELECT Cus_Ref, Cus_Address, Cus_Name FROM Customer WHERE (Cus_Ref = @Cus_Ref)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Cus_Ref, string Cus_Address, string Cus_Name) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Cus_Ref));
+        public virtual int Insert(string Cus_Address, string Cus_Name) {
             if ((Cus_Address == null)) {
                 throw new global::System.ArgumentNullException("Cus_Address");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Cus_Address));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Cus_Address));
             }
             if ((Cus_Name == null)) {
                 throw new global::System.ArgumentNullException("Cus_Name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Cus_Name));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Cus_Name));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2255,33 +2222,33 @@ SELECT Cus_Ref, Cus_Address, Cus_Name FROM Customer WHERE (Cus_Ref = @Cus_Ref)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Cus_Ref, string Cus_Address, string Cus_Name, int Original_Cus_Ref, string Original_Cus_Address, string Original_Cus_Name) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Cus_Ref));
+        public virtual int Update(string Cus_Address, string Cus_Name, int Original_Cus_Ref, string Original_Cus_Address, string Original_Cus_Name, int Cus_Ref) {
             if ((Cus_Address == null)) {
                 throw new global::System.ArgumentNullException("Cus_Address");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Cus_Address));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Cus_Address));
             }
             if ((Cus_Name == null)) {
                 throw new global::System.ArgumentNullException("Cus_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Cus_Name));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Cus_Name));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Cus_Ref));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Cus_Ref));
             if ((Original_Cus_Address == null)) {
                 throw new global::System.ArgumentNullException("Original_Cus_Address");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Cus_Address));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_Cus_Address));
             }
             if ((Original_Cus_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Cus_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Cus_Name));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Cus_Name));
             }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Cus_Ref));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2303,7 +2270,7 @@ SELECT Cus_Ref, Cus_Address, Cus_Name FROM Customer WHERE (Cus_Ref = @Cus_Ref)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Cus_Address, string Cus_Name, int Original_Cus_Ref, string Original_Cus_Address, string Original_Cus_Name) {
-            return this.Update(Original_Cus_Ref, Cus_Address, Cus_Name, Original_Cus_Ref, Original_Cus_Address, Original_Cus_Name);
+            return this.Update(Cus_Address, Cus_Name, Original_Cus_Ref, Original_Cus_Address, Original_Cus_Name, Original_Cus_Ref);
         }
     }
     
@@ -2467,9 +2434,8 @@ SELECT Guest_Pass_Num, Guest_Name, Gus_Age FROM Guest_Table WHERE (Guest_Pass_Nu
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\dtd2509\\Documents\\V" +
-                "isual Studio 2015\\Projects\\cw2-csharp-db\\cw2-csharp-db\\sampledatabase.mdf\";Integ" +
-                "rated Security=True;Connect Timeout=30";
+            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\bin\\Debug\\sam" +
+                "pledatabase.mdf;Integrated Security=True;Connect Timeout=30";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

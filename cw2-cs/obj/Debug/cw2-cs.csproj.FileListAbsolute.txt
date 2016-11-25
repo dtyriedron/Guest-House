@@ -44,3 +44,7 @@ C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\cw2_cs.Properties.Resources.r
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\cw2-cs.csproj.GenerateResource.Cache
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDCustomer.g.cs
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDCustomer.baml
+C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDAmendCus.g.cs
+C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDAmendCus.baml
+C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDAmendBook.g.cs
+C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDAmendBook.baml

@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Configuration;
 
 namespace cw2_cs
 {
@@ -20,6 +21,8 @@ namespace cw2_cs
     /// </summary>
     public partial class ADDCustomer : Window
     {
+        SqlConnection con =
+            new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\sampledatabase.mdf; Integrated Security = True; Connect Timeout = 30");
         public ADDCustomer()
         {
             InitializeComponent();
@@ -30,10 +33,8 @@ namespace cw2_cs
 
         private void SAVE_btn_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection con =
-             new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\dtd2509\Documents\Visual Studio 2015\Projects\cw2-csharp-db\cw2-csharp-db\sampledatabase.mdf; Integrated Security = True; Connect Timeout = 30");
-
             SqlCommand com = new SqlCommand("INSERT INTO Customer (Cus_Address,Cus_Name) VALUES (@Cus_Address,@Cus_Name)");
+            
             com.CommandType = System.Data.CommandType.Text;
             com.Connection = con;
             com.Parameters.AddWithValue("@Cus_Address", Cus_Address_txtbx.Text);

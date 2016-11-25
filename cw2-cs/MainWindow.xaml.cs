@@ -50,6 +50,8 @@ namespace cw2_cs
 
         private void AMEND_Booking_btn_Click(object sender, RoutedEventArgs e)
         {
+            ADDAmendBook Amendbook = new ADDAmendBook();
+            Amendbook.ShowDialog();
             //this should allow the user to edit the booking by redirecting to the addbooking window and editing any fields there
         }
 
@@ -63,6 +65,12 @@ namespace cw2_cs
             ADDCustomer customerWindow = new ADDCustomer();
             customerWindow.ShowDialog();
             //this will start a new customer window
+        }
+
+        private void Amend_Customer_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ADDAmend amendWindow = new ADDAmend();
+            amendWindow.ShowDialog();
         }
 
 

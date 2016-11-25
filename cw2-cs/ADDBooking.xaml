@@ -7,13 +7,17 @@
         mc:Ignorable="d"
         Title="ADDBooking" Height="300" Width="300">
     <Grid>
-        <Label x:Name="Booking_Date_lbl" Content="Check-in: " HorizontalAlignment="Left" Height="45" Margin="10,22,0,0" VerticalAlignment="Top" Width="94"/>
-        <Label x:Name="Car_Hire_lbl" Content="Car Hire for no. of days: " HorizontalAlignment="Left" Height="45" Margin="10,117,0,0" VerticalAlignment="Top" Width="140"/>
-        <Label x:Name="Booking_Leave_Date_lbl" Content="Check-out: " HorizontalAlignment="Left" Height="45" Margin="10,67,0,0" VerticalAlignment="Top" Width="94"/>
-        <ComboBox x:Name="Car_Hire_cmbx" HorizontalAlignment="Left" Height="25" Margin="155,126,0,0" VerticalAlignment="Top" Width="60"/>
-        <TextBox x:Name="Booking_Date_txtbx" HorizontalAlignment="Left" Height="45" Margin="95,22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
-        <TextBox x:Name="Booking_Leave_Date_txtbx" HorizontalAlignment="Left" Height="45" Margin="95,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
-        <Button x:Name="SAVE_btn" Content="Save" HorizontalAlignment="Left" Height="22" Margin="215,238,0,0" VerticalAlignment="Top" Width="67"/>
+        <Label x:Name="Cus_Name_lbl" Content="Cus Name: " HorizontalAlignment="Left" Height="45" Margin="10,29,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Car_Hire_lbl" Content="Car Hire for no. of days: " HorizontalAlignment="Left" Height="45" Margin="10,194,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label x:Name="Booking_Leave_Date_lbl" Content="Check-out: " HorizontalAlignment="Left" Height="45" Margin="10,144,0,0" VerticalAlignment="Top" Width="94"/>
+        <ComboBox x:Name="Car_Hire_cmbx" HorizontalAlignment="Left" Height="25" Margin="155,194,0,0" VerticalAlignment="Top" Width="60"/>
+        <TextBox x:Name="Booking_Date_txtbx" HorizontalAlignment="Left" Height="33" Margin="95,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Booking_Leave_Date_txtbx" HorizontalAlignment="Left" Height="33" Margin="95,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Cus_Address_txtbx" HorizontalAlignment="Left" Height="33" Margin="95,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Cus_Name_txtbx" HorizontalAlignment="Left" Height="34" Margin="95,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Cus_Address_lbl" Content="Cus Address: " HorizontalAlignment="Left" Height="45" Margin="10,63,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Booking_Date_lbl" Content="Check-in: " HorizontalAlignment="Left" Height="45" Margin="10,101,0,0" VerticalAlignment="Top" Width="94"/>
+        <Button x:Name="SAVE_btn" Content="Save" HorizontalAlignment="Left" Height="21" Margin="233,239,0,0" VerticalAlignment="Top" Width="49" Click="SAVE_btn_Click"/>
 
     </Grid>
 </Window>

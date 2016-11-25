@@ -7,10 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cw2-cs", "cw2-cs\cw2-cs.csp
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		ConnectionString|Any CPU = ConnectionString|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2DF9FA3-4819-4916-BE73-DC5F440304DD}.ConnectionString|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2DF9FA3-4819-4916-BE73-DC5F440304DD}.ConnectionString|Any CPU.Build.0 = Debug|Any CPU
 		{C2DF9FA3-4819-4916-BE73-DC5F440304DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2DF9FA3-4819-4916-BE73-DC5F440304DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2DF9FA3-4819-4916-BE73-DC5F440304DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
