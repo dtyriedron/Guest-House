@@ -91,20 +91,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ADDAmendBook.xaml.cs">
+    <Compile Include="AMEND\ADDAmendBook.xaml.cs">
       <DependentUpon>ADDAmendBook.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ADDAmendCus.xaml.cs">
+    <Compile Include="AMEND\ADDAmendCus.xaml.cs">
       <DependentUpon>ADDAmendCus.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ADDBooking.xaml.cs">
+    <Compile Include="AMEND\ADDAmendGuest.xaml.cs">
+      <DependentUpon>ADDAmendGuest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ADD\ADDBooking.xaml.cs">
       <DependentUpon>ADDBooking.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ADDCustomer.xaml.cs">
+    <Compile Include="ADD\ADDCustomer.xaml.cs">
       <DependentUpon>ADDCustomer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ADDGuest.xaml.cs">
+    <Compile Include="ADD\ADDGuest.xaml.cs">
       <DependentUpon>ADDGuest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DEL\DELBooking.xaml.cs">
+      <DependentUpon>DELBooking.xaml</DependentUpon>
     </Compile>
     <Compile Include="sampledatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -112,23 +118,31 @@
       <DependentUpon>sampledatabaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Testlist.cs" />
-    <Page Include="ADDAmendBook.xaml">
+    <Page Include="AMEND\ADDAmendBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ADDAmendCus.xaml">
+    <Page Include="AMEND\ADDAmendCus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ADDBooking.xaml">
+    <Page Include="AMEND\ADDAmendGuest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ADDCustomer.xaml">
+    <Page Include="ADD\ADDBooking.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ADDGuest.xaml">
+    <Page Include="ADD\ADDCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ADD\ADDGuest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DEL\DELBooking.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

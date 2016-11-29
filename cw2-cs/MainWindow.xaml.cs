@@ -26,10 +26,7 @@ namespace cw2_cs
     {
         public MainWindow()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\dtd2509\Documents\Visual Studio 2015\Projects\cw2-csharp-db\cw2-csharp-db\sampledatabase.mdf; Integrated Security = True; Connect Timeout = 30");
-            con.Open();
-            SqlCommand com = new SqlCommand(
-                "SELECT * FROM Booking", con);
+            
 
             Console.ReadLine();
 
@@ -45,6 +42,8 @@ namespace cw2_cs
 
         private void DELETE_Booking_btn_Click(object sender, RoutedEventArgs e)
         {
+            DELBooking DELbookingWindow = new DELBooking();
+            DELbookingWindow.ShowDialog();
             //this completely removes the booking, this should have a check built in so that the user does not remove the booking by mistake
         }
 
@@ -69,8 +68,20 @@ namespace cw2_cs
 
         private void Amend_Customer_btn_Click(object sender, RoutedEventArgs e)
         {
-            ADDAmend amendWindow = new ADDAmend();
+            ADDAmendCus amendWindow = new ADDAmendCus();
             amendWindow.ShowDialog();
+        }
+
+        private void ADD_Guest_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ADDGuest GuestWindow = new ADDGuest();
+            GuestWindow.ShowDialog();
+        }
+
+        private void Amend_Guest_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ADDAmendGuest AmendGuestWindow = new ADDAmendGuest();
+            AmendGuestWindow.ShowDialog();
         }
 
 

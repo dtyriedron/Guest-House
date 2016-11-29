@@ -1,0 +1,21 @@
+﻿<Window x:Class="cw2_cs.ADDAmendGuest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:cw2_cs"
+        mc:Ignorable="d"
+        Title="ADDAmendGuest" Height="300" Width="300">
+    <Grid>
+        <TextBox x:Name="Amend_Gus_Name_txtbx" HorizontalAlignment="Left" Height="25" Margin="177,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Amend_Gus_Name_lbl" Content="Amend Guest Name: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,82,0,0" Height="29" Width="123"/>
+        <Label x:Name="Gus_Pass_Num_lbl" Content="Guest Passport Number: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,10,0,0" Height="30" Width="139"/>
+        <TextBox x:Name="Gus_Pass_Num_txtbx" HorizontalAlignment="Left" Height="25" Margin="177,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Button x:Name="SAVE_btn" Content="Save" HorizontalAlignment="Left" Height="20" Margin="226,240,0,0" VerticalAlignment="Top" Width="56" Click="SAVE_btn_Click"/>
+        <Label x:Name="Amend_Pass_Num" Content="Amend Passport Number:" HorizontalAlignment="Left" Height="29" Margin="19,116,0,0" VerticalAlignment="Top" Width="148"/>
+        <TextBox x:Name="Amend_Pass_Num_txtbx" HorizontalAlignment="Left" Height="25" Margin="177,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Amend_Gus_Age" Content="Amend Guest Age:" HorizontalAlignment="Left" Height="29" Margin="19,146,0,0" VerticalAlignment="Top" Width="148"/>
+        <TextBox x:Name="Amend_Gus_Age_txtbx" HorizontalAlignment="Left" Height="25" Margin="177,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+
+    </Grid>
+</Window>

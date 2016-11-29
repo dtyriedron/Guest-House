@@ -48,3 +48,7 @@ C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDAmendCus.g.cs
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDAmendCus.baml
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDAmendBook.g.cs
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDAmendBook.baml
+C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDAmendGuest.g.cs
+C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADDAmendGuest.baml
+C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\DELBooking.g.cs
+C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\DELBooking.baml

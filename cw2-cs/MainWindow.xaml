@@ -13,6 +13,8 @@
         <Button x:Name="INVOICE_btn" Content="Invoice" HorizontalAlignment="Left" Height="45" Margin="81,265,0,0" VerticalAlignment="Top" Width="105" Click="INVOICE_btn_Click"/>
         <Button x:Name="ADD_Customer_btn" Content="Add Customer" HorizontalAlignment="Left" Height="45" Margin="81,15,0,0" VerticalAlignment="Top" Width="105" Click="ADD_Customer_btn_Click"/>
         <Button x:Name="Amend_Customer_btn" Content="Amend Customer" HorizontalAlignment="Left" Height="45" Margin="81,165,0,0" VerticalAlignment="Top" Width="105" Click="Amend_Customer_btn_Click"/>
+        <Button x:Name="ADD_Guest_btn" Content="Add Guest" HorizontalAlignment="Left" Height="45" Margin="272,15,0,0" VerticalAlignment="Top" Width="116" Click="ADD_Guest_btn_Click"/>
+        <Button x:Name="Amend_Guest_btn" Content="Amend Guest" HorizontalAlignment="Left" Height="45" Margin="272,65,0,0" VerticalAlignment="Top" Width="116" Click="Amend_Guest_btn_Click"/>
 
     </Grid>
 </Window>
