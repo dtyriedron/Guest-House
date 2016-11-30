@@ -109,6 +109,12 @@
     <Compile Include="ADD\ADDGuest.xaml.cs">
       <DependentUpon>ADDGuest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DEL\DELGuest.xaml.cs">
+      <DependentUpon>DELGuest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DEL\DELCustomer.xaml.cs">
+      <DependentUpon>DELCustomer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DEL\DELBooking.xaml.cs">
       <DependentUpon>DELBooking.xaml</DependentUpon>
     </Compile>
@@ -139,6 +145,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ADD\ADDGuest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DEL\DELGuest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DEL\DELCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

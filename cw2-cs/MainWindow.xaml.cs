@@ -84,6 +84,18 @@ namespace cw2_cs
             AmendGuestWindow.ShowDialog();
         }
 
+        private void Delete_Cus_btn_Click(object sender, RoutedEventArgs e)
+        {
+            DELCustomer DELCustomerWindow = new DELCustomer();
+            DELCustomerWindow.ShowDialog();
+        }
+
+        private void Delete_Guest_btn_Click(object sender, RoutedEventArgs e)
+        {
+            DELGuest DELGuestWindow = new DELGuest();
+            DELGuestWindow.ShowDialog();
+        }
+
 
 
 
