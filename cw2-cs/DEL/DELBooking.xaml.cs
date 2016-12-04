@@ -23,8 +23,7 @@ namespace cw2_cs
         public string Cus_Ref_Search = "";
         public string Booking_Ref_Search = "";
 
-        SqlConnection con =
-           new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\sampledatabase.mdf; Integrated Security = True; Connect Timeout = 30");
+        ConnectionFacade DelBookFacade = new ConnectionFacade();
 
         public DELBooking()
         {
@@ -33,6 +32,8 @@ namespace cw2_cs
 
         private void SAVE_btn_Click(object sender, RoutedEventArgs e)
         {
+            SqlConnection con = DelBookFacade.Connect();
+
             SqlCommand com = new SqlCommand("SELECT Cus_Name, Cus_Ref, Cus_Address FROM Customer WHERE Cus_Name=@Cus_Name AND Cus_Address=@Cus_Address");
 
             string query1 = "SELECT Booking_Date, Date_Leaving, BookingRef FROM Booking WHERE Booking_Date=@SELECT_Booking_Date AND Date_Leaving=@SELECT_Date_Leaving AND Customer_id=@REF_Cus_Ref";

@@ -20,15 +20,18 @@ namespace cw2_cs
     /// </summary>
     public partial class DELCustomer : Window
     {
+        ConnectionFacade DelCusFacade = new ConnectionFacade();
+
         public DELCustomer()
         {
             InitializeComponent();
         }
-        SqlConnection con =
-          new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\sampledatabase.mdf; Integrated Security = True; Connect Timeout = 30");
+        
 
         private void Remove_btn_Click(object sender, RoutedEventArgs e)
         {
+            SqlConnection con = DelCusFacade.Connect();
+
             SqlCommand com = new SqlCommand("DELETE FROM Customer WHERE Cus_Name = @Cus_Name AND Cus_Address = @Cus_Address");
 
             com.Parameters.AddWithValue("@Cus_Address", Cus_Address_txtbx.Text);

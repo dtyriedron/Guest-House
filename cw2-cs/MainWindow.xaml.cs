@@ -72,11 +72,6 @@ namespace cw2_cs
             amendWindow.ShowDialog();
         }
 
-        private void ADD_Guest_btn_Click(object sender, RoutedEventArgs e)
-        {
-            ADDGuest GuestWindow = new ADDGuest();
-            GuestWindow.ShowDialog();
-        }
 
         private void Amend_Guest_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -95,6 +90,14 @@ namespace cw2_cs
             DELGuest DELGuestWindow = new DELGuest();
             DELGuestWindow.ShowDialog();
         }
+
+        private void Amend_Extra_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ADDAmendExtra AmendExtraWindow = new ADDAmendExtra();
+            AmendExtraWindow.ShowDialog();
+        }
+
+
 
 
 

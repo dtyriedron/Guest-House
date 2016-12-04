@@ -7,17 +7,33 @@
         mc:Ignorable="d"
         Title="ADDBooking" Height="300" Width="300">
     <Grid>
-        <Label x:Name="Cus_Name_lbl" Content="Cus Name: " HorizontalAlignment="Left" Height="45" Margin="10,29,0,0" VerticalAlignment="Top" Width="94"/>
-        <Label x:Name="Car_Hire_lbl" Content="Car Hire for no. of days: " HorizontalAlignment="Left" Height="45" Margin="10,194,0,0" VerticalAlignment="Top" Width="140"/>
-        <Label x:Name="Booking_Leave_Date_lbl" Content="Check-out: " HorizontalAlignment="Left" Height="45" Margin="10,144,0,0" VerticalAlignment="Top" Width="94"/>
-        <ComboBox x:Name="Car_Hire_cmbx" HorizontalAlignment="Left" Height="25" Margin="155,194,0,0" VerticalAlignment="Top" Width="60"/>
-        <TextBox x:Name="Booking_Date_txtbx" HorizontalAlignment="Left" Height="33" Margin="95,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
-        <TextBox x:Name="Booking_Leave_Date_txtbx" HorizontalAlignment="Left" Height="33" Margin="95,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
-        <TextBox x:Name="Cus_Address_txtbx" HorizontalAlignment="Left" Height="33" Margin="95,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
-        <TextBox x:Name="Cus_Name_txtbx" HorizontalAlignment="Left" Height="34" Margin="95,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
-        <Label x:Name="Cus_Address_lbl" Content="Cus Address: " HorizontalAlignment="Left" Height="45" Margin="10,63,0,0" VerticalAlignment="Top" Width="94"/>
-        <Label x:Name="Booking_Date_lbl" Content="Check-in: " HorizontalAlignment="Left" Height="45" Margin="10,101,0,0" VerticalAlignment="Top" Width="94"/>
-        <Button x:Name="SAVE_btn" Content="Save" HorizontalAlignment="Left" Height="21" Margin="233,239,0,0" VerticalAlignment="Top" Width="49" Click="SAVE_btn_Click"/>
+        <Label x:Name="Cus_Name_lbl" Content="Cus Name: " HorizontalAlignment="Left" Height="25" Margin="13,1,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Booking_Leave_Date_lbl" Content="Check-out: " HorizontalAlignment="Left" Height="25" Margin="14,89,0,0" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Booking_Date_txtbx" HorizontalAlignment="Left" Height="25" Margin="154,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Booking_Leave_Date_txtbx" HorizontalAlignment="Left" Height="25" Margin="154,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Cus_Address_txtbx" HorizontalAlignment="Left" Height="25" Margin="153,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Cus_Name_txtbx" HorizontalAlignment="Left" Height="25" Margin="153,1,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Cus_Address_lbl" Content="Cus Address: " HorizontalAlignment="Left" Height="30" Margin="13,31,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Booking_Date_lbl" Content="Check-in: " HorizontalAlignment="Left" Height="25" Margin="14,61,0,0" VerticalAlignment="Top" Width="94"/>
+        <Button x:Name="SAVE_btn" Content="Save" HorizontalAlignment="Left" Height="21" Margin="198,171,0,0" VerticalAlignment="Top" Width="49" Click="SAVE_btn_Click"/>
+        <Label x:Name="No_Guests_lbl" Content="No. of Guests: " HorizontalAlignment="Left" Height="25" Margin="9,119,0,0" VerticalAlignment="Top" Width="140"/>
+        <ComboBox x:Name="No_Guests_cmbobx" HorizontalAlignment="Left" Height="25" Margin="154,119,0,0" VerticalAlignment="Top" Width="38" Loaded="No_Guests_cmbobx_Loaded"/>
+        <Button x:Name="Extra_btn" Content="Add Extras" HorizontalAlignment="Left" Height="21" Margin="98,171,0,0" VerticalAlignment="Top" Width="64" Click="Extra_btn_Click"/>
+        <Label x:Name="Car_Hire_lbl" Content="Car Hire for no. of days: " HorizontalAlignment="Left" Height="25" Margin="7,10,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <Label x:Name="Dinner_lbl" Content="Dinner for no. of days: " HorizontalAlignment="Left" Height="25" Margin="7,127,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <Label x:Name="Breakfast_lbl" Content="Breakfast for no. of days: " HorizontalAlignment="Left" Height="25" Margin="8,157,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <TextBox x:Name="Car_Hire_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <TextBox x:Name="Dinner_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <TextBox x:Name="Breakfast_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <Label x:Name="Car_Hire_Start_Date_lbl" Content="Car Hire Start Date: " HorizontalAlignment="Left" Height="25" Margin="7,37,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <Label x:Name="Car_Hire_End_Date_lbl" Content="Car Hire End Date: " HorizontalAlignment="Left" Height="25" Margin="7,67,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <TextBox x:Name="Car_Hire_Start_Date_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <TextBox x:Name="Car_Hire_End_Date_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <Label x:Name="Car_Hire_Driver_Name_lbl" Content="Car Hire Driver Name: " HorizontalAlignment="Left" Height="25" Margin="7,97,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <TextBox x:Name="Car_Hire_Driver_Name_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <Label x:Name="Dietry_Requirements_lbl" Content="Dietry Requirements: " HorizontalAlignment="Left" Height="25" Margin="8,187,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <TextBox x:Name="Dietry_Requirements_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <Button x:Name="SAVE_EXTRA_btn" Content="Save Extra" HorizontalAlignment="Left" Height="19" Margin="222,241,0,0" VerticalAlignment="Top" Width="60" Click="SAVE_EXTRA_btn_Click"/>
 
     </Grid>
 </Window>

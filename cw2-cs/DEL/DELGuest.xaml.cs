@@ -25,11 +25,12 @@ namespace cw2_cs
             InitializeComponent();
         }
 
-        SqlConnection con =
-          new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\sampledatabase.mdf; Integrated Security = True; Connect Timeout = 30");
+        ConnectionFacade DelGuestFacade = new ConnectionFacade();
 
         private void Remove_btn_Click(object sender, RoutedEventArgs e)
         {
+            SqlConnection con = DelGuestFacade.Connect();
+
             SqlCommand com = new SqlCommand("DELETE FROM Guest_Table WHERE Guest_Pass_Num=@Guest_Pass_Num");
 
             com.Parameters.AddWithValue("@Guest_Pass_Num", Guest_Pass_Num_txtbx.Text);

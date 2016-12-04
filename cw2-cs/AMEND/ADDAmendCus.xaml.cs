@@ -22,8 +22,9 @@ namespace cw2_cs
     public partial class ADDAmendCus : Window
     {
         public string Cus_Ref_Search = "";
-        SqlConnection con =
-           new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\sampledatabase.mdf; Integrated Security = True; Connect Timeout = 30");
+
+        ConnectionFacade AmendCusFacade = new ConnectionFacade();
+
         public ADDAmendCus()
         {
             InitializeComponent();
@@ -31,6 +32,8 @@ namespace cw2_cs
 
         private void Search_btn_Click(object sender, RoutedEventArgs e)
         {
+            SqlConnection con = AmendCusFacade.Connect();
+
             SqlCommand com = new SqlCommand("SELECT Cus_Address, Cus_Name, Cus_Ref FROM Customer WHERE Cus_Address=@Cus_Address AND Cus_Name= @Cus_Name");
 
             string address="";
@@ -70,6 +73,8 @@ namespace cw2_cs
 
         private void Amend_btn_Click(object sender, RoutedEventArgs e)
         {
+            SqlConnection con = AmendCusFacade.Connect();
+
             SqlCommand com = new SqlCommand("UPDATE Customer SET Cus_Address=@Cus_Address, Cus_Name=@Cus_Name WHERE Cus_Ref=@Cus_Ref_Search",con);
 
             com.CommandType = System.Data.CommandType.Text;

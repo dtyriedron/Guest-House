@@ -21,6 +21,7 @@ namespace cw2_cs
     public partial class ADDAmendBook : Window
     {
         public string Cus_Ref_Search = "";
+        ConnectionFacade AmendBookFacade = new ConnectionFacade();
         public ADDAmendBook()
         {
             InitializeComponent();
@@ -28,23 +29,19 @@ namespace cw2_cs
 
         private void SAVE_btn_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection con =
-            new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\sampledatabase.mdf; Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = AmendBookFacade.Connect();
 
             SqlCommand com = new SqlCommand("SELECT Cus_Name, Cus_Ref, Cus_Address FROM Customer WHERE Cus_Name=@Cus_Name AND Cus_Address=@Cus_Address");
 
-            string nextquery = "UPDATE Booking SET Booking_Date=@Booking_Date, Date_Leaving=@Booking_Leave_Date, Customer_id=@Cus_Ref WHERE Customer_id=@Cus_Ref";
+            string query1 = "SELECT Booking_Date, Date_Leaving FROM Booking WHERE Booking_Date=@SELECT_Booking_Date AND Date_Leaving=@SELECT_Date_Leaving";
+
+            string query2 = "UPDATE Booking SET Booking_Date=@Booking_Date, Date_Leaving=@Booking_Leave_Date, Customer_id=@Cus_Ref WHERE Customer_id=@Cus_Ref";
 
             com.Parameters.AddWithValue("@Cus_Address", Cus_Address_txtbx.Text);
             com.Parameters.AddWithValue("@Cus_Name", Cus_Name_txtbx.Text);
 
             com.CommandType = System.Data.CommandType.Text;
             com.Connection = con;
-
-            /* add in checks for booking_date and booking_leave_date
-             
-             */
-
 
             con.Open();
             SqlDataReader rdr = com.ExecuteReader();
@@ -55,14 +52,19 @@ namespace cw2_cs
             rdr.Close();
             MessageBox.Show(Cus_Ref_Search);
 
-            com.CommandText = nextquery;
+            com.CommandText = query1;
+            com.Parameters.AddWithValue("@SELECT_Booking_Date", Booking_Date_txtbx.Text);
+            com.Parameters.AddWithValue("@SELECT_Date_Leaving", Booking_Leave_Date_txtbx.Text);
+            com.ExecuteNonQuery();
+
+            com.CommandText = query2;
             com.Parameters.AddWithValue("@Cus_Ref", Cus_Ref_Search);
             com.Parameters.AddWithValue("@Booking_Date", Amend_Booking_Date_txtbx.Text);
             com.Parameters.AddWithValue("@Booking_Leave_Date", Amend_Booking_Leave_Date_txtbx.Text);
 
-            int ralf = com.ExecuteNonQuery();
+            int ralf2 = com.ExecuteNonQuery();
             con.Close();
-            MessageBox.Show(ralf.ToString());
+            MessageBox.Show(ralf2.ToString());
         }
     }
 }

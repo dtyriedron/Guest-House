@@ -22,8 +22,8 @@ namespace cw2_cs
     {
         string Gus_Pass_Search= "";
 
-        SqlConnection con =
-           new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\sampledatabase.mdf; Integrated Security = True; Connect Timeout = 30");
+        ConnectionFacade AmendGuestFacade = new ConnectionFacade();
+
         public ADDAmendGuest()
         {
             InitializeComponent();
@@ -31,6 +31,8 @@ namespace cw2_cs
 
         private void SAVE_btn_Click(object sender, RoutedEventArgs e)
         {
+            SqlConnection con = AmendGuestFacade.Connect();
+
             SqlCommand com = new SqlCommand("SELECT Guest_Pass_Num FROM Guest_Table WHERE Guest_Pass_Num=@REF_Guest_Pass_Num");
 
             string query1 = "UPDATE Guest_Table SET Guest_Name=@Guest_Name, Guest_Pass_Num=@Amend_Guest_Pass_Num, Gus_Age=@Gus_Age WHERE Guest_Pass_Num=@Guest_Pass_Num";

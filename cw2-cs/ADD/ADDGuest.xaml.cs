@@ -23,18 +23,20 @@ namespace cw2_cs
         public string Cus_Ref_Search = "";
         public string Book_Ref_Search = "";
 
-        SqlConnection con =
-            new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\sampledatabase.mdf; Integrated Security = True; Connect Timeout = 30");
+        ConnectionFacade ADDGuestFacade = new ConnectionFacade();
         public ADDGuest()
         {
            InitializeComponent();
         }
 
+        //saves progress and takes you to the next window
         private void SAVE_btn_Click(object sender, RoutedEventArgs e)
         {
-            //saves progress and takes you to the next window
-            SqlCommand com = new SqlCommand("SELECT Cus_Ref, Cus_Name, Cus_Address FROM Customer WHERE Cus_Address=@Cus_Address AND Cus_Name=@Cus_Name");
+            
+            SqlConnection con = ADDGuestFacade.Connect();
 
+            SqlCommand com = new SqlCommand("SELECT Cus_Ref, Cus_Name, Cus_Address FROM Customer WHERE Cus_Address=@Cus_Address AND Cus_Name=@Cus_Name");
+            
             string query1 = "SELECT BookingRef, Booking_Date, Date_Leaving FROM Booking WHERE Booking_Date=@Booking_Date AND Date_Leaving=@Booking_Leave_Date";
 
             string query2 = "INSERT INTO Guest_Table (Guest_Pass_Num,Guest_Name,Gus_Age, Booking_id, Customer_id) VALUES (@Guest_Pass_Num,@Guest_Name,@Gus_Age, @BookingRef, @Cus_Ref)";

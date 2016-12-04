@@ -91,6 +91,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AMEND\ADDAmendExtra.xaml.cs">
+      <DependentUpon>ADDAmendExtra.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AMEND\ADDAmendBook.xaml.cs">
       <DependentUpon>ADDAmendBook.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,7 @@
     <Compile Include="ADD\ADDGuest.xaml.cs">
       <DependentUpon>ADDGuest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionFacade.cs" />
     <Compile Include="DEL\DELGuest.xaml.cs">
       <DependentUpon>DELGuest.xaml</DependentUpon>
     </Compile>
@@ -118,12 +122,19 @@
     <Compile Include="DEL\DELBooking.xaml.cs">
       <DependentUpon>DELBooking.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Invoice.xaml.cs">
+      <DependentUpon>Invoice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="sampledatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sampledatabaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Testlist.cs" />
+    <Page Include="AMEND\ADDAmendExtra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AMEND\ADDAmendBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -157,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DEL\DELBooking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Invoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -21,8 +21,8 @@ namespace cw2_cs
     /// </summary>
     public partial class ADDCustomer : Window
     {
-        SqlConnection con =
-            new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\sampledatabase.mdf; Integrated Security = True; Connect Timeout = 30");
+        ConnectionFacade ADDCusFacade = new ConnectionFacade();
+        
         public ADDCustomer()
         {
             InitializeComponent();
@@ -33,6 +33,8 @@ namespace cw2_cs
 
         private void SAVE_btn_Click(object sender, RoutedEventArgs e)
         {
+            SqlConnection con = ADDCusFacade.Connect();
+            
             SqlCommand com = new SqlCommand("INSERT INTO Customer (Cus_Address,Cus_Name) VALUES (@Cus_Address,@Cus_Name)");
             
             com.CommandType = System.Data.CommandType.Text;

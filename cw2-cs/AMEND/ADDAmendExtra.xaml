@@ -1,0 +1,36 @@
+﻿<Window x:Class="cw2_cs.ADDAmendExtra"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:cw2_cs"
+        mc:Ignorable="d"
+        Title="ADDAmendExtra" Height="300" Width="300">
+    <Grid>
+        <Label x:Name="Amend_Car_Hire_lbl" Content="Car Hire for no. of days: " HorizontalAlignment="Left" Height="25" Margin="7,10,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <Label x:Name="Amend_Dinner_lbl" Content="Dinner for no. of days: " HorizontalAlignment="Left" Height="25" Margin="7,127,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <Label x:Name="Amend_Breakfast_lbl" Content="Breakfast for no. of days: " HorizontalAlignment="Left" Height="25" Margin="8,157,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <TextBox x:Name="Amend_Car_Hire_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <TextBox x:Name="Amend_Dinner_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <TextBox x:Name="Amend_Breakfast_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <Label x:Name="Amend_Car_Hire_Start_Date_lbl" Content="Car Hire Start Date: " HorizontalAlignment="Left" Height="25" Margin="7,37,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <Label x:Name="Amend_Car_Hire_End_Date_lbl" Content="Car Hire End Date: " HorizontalAlignment="Left" Height="25" Margin="7,67,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <TextBox x:Name="Amend_Car_Hire_Start_Date_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <TextBox x:Name="Amend_Car_Hire_End_Date_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <Label x:Name="Amend_Car_Hire_Driver_Name_lbl" Content="Car Hire Driver Name: " HorizontalAlignment="Left" Height="25" Margin="7,97,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <TextBox x:Name="Amend_Car_Hire_Driver_Name_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <Button x:Name="SAVE_btn" Content="Save" HorizontalAlignment="Left" Height="21" Margin="235,239,0,0" VerticalAlignment="Top" Width="47" Click="SAVE_btn_Click" Visibility="Hidden"/>
+        <Label x:Name="Amend_Dietry_Requirements_lbl" Content="Dietry Requirements: " HorizontalAlignment="Left" Height="25" Margin="8,187,0,0" VerticalAlignment="Top" Width="140" Visibility="Hidden"/>
+        <TextBox x:Name="Amend_Dietry_Requirements_txtbx" HorizontalAlignment="Left" Height="25" Margin="147,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Visibility="Hidden"/>
+        <Label x:Name="Cus_Name_lbl" Content="Cus Name: " HorizontalAlignment="Left" Height="25" Margin="18,19,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Booking_Leave_Date_lbl" Content="Check-out: " HorizontalAlignment="Left" Height="25" Margin="19,107,0,0" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Booking_Date_txtbx" HorizontalAlignment="Left" Height="25" Margin="159,77,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Booking_Leave_Date_txtbx" HorizontalAlignment="Left" Height="25" Margin="159,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Cus_Address_txtbx" HorizontalAlignment="Left" Height="25" Margin="158,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="Cus_Name_txtbx" HorizontalAlignment="Left" Height="25" Margin="158,19,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Cus_Address_lbl" Content="Cus Address: " HorizontalAlignment="Left" Height="30" Margin="18,49,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="Booking_Date_lbl" Content="Check-in: " HorizontalAlignment="Left" Height="25" Margin="19,79,0,0" VerticalAlignment="Top" Width="94"/>
+        <Button x:Name="Search_btn" Content="Search" HorizontalAlignment="Left" Height="30" Margin="203,137,0,0" VerticalAlignment="Top" Width="50" Click="Search_btn_Click"/>
+
+    </Grid>
+</Window>
