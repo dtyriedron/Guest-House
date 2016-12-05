@@ -56,7 +56,9 @@ namespace cw2_cs
 
         private void INVOICE_btn_Click(object sender, RoutedEventArgs e)
         {
-            //this should show the total cost of the booking in a newe invoice window
+            //this should show the total cost of the booking in a new invoice window
+            Invoice InvoiceWindow = new Invoice();
+            InvoiceWindow.ShowDialog();
         }
 
         private void ADD_Customer_btn_Click(object sender, RoutedEventArgs e)
@@ -95,6 +97,12 @@ namespace cw2_cs
         {
             ADDAmendExtra AmendExtraWindow = new ADDAmendExtra();
             AmendExtraWindow.ShowDialog();
+        }
+
+        private void DEL_Extra_Click(object sender, RoutedEventArgs e)
+        {
+            DELExtra DELExtraWindow = new DELExtra();
+            DELExtraWindow.ShowDialog();
         }
 
 

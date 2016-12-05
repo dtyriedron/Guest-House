@@ -113,6 +113,9 @@
       <DependentUpon>ADDGuest.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConnectionFacade.cs" />
+    <Compile Include="DEL\DELExtra.xaml.cs">
+      <DependentUpon>DELExtra.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DEL\DELGuest.xaml.cs">
       <DependentUpon>DELGuest.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ADD\ADDGuest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DEL\DELExtra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

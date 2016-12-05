@@ -17,6 +17,7 @@
         <Button x:Name="Delete_Cus_btn" Content="Delete Customer" HorizontalAlignment="Left" Height="45" Margin="272,115,0,0" VerticalAlignment="Top" Width="116" Click="Delete_Cus_btn_Click"/>
         <Button x:Name="Delete_Guest_btn" Content="Delete Guest" HorizontalAlignment="Left" Height="45" Margin="272,165,0,0" VerticalAlignment="Top" Width="116" Click="Delete_Guest_btn_Click"/>
         <Button x:Name="Amend_Extra_btn" Content="Amend Extra" HorizontalAlignment="Left" Height="45" Margin="272,215,0,0" VerticalAlignment="Top" Width="116" Click="Amend_Extra_btn_Click"/>
+        <Button x:Name="DEL_Extra" Content="Del Extra" HorizontalAlignment="Left" Height="45" Margin="272,15,0,0" VerticalAlignment="Top" Width="116" Click="DEL_Extra_Click"/>
 
     </Grid>
 </Window>

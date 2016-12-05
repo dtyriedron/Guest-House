@@ -79,8 +79,6 @@ namespace cw2_cs
             MessageBox.Show("Cus ref= " + Cus_Ref_Search);
 
 
-
-
             //save all the entered values for a booking into the db
             string INSERT_BOOK_Query = "INSERT INTO Booking (Booking_Date, Date_Leaving, Customer_id, No_Guests) VALUES (@Booking_Date, @Booking_Leave_Date, @Cus_Ref, @No_Guests)";
             //change the text of the command so there can be a new query
