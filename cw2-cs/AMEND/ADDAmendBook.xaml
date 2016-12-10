@@ -7,18 +7,7 @@
         mc:Ignorable="d"
         Title="ADDAmendBook" Height="300" Width="300">
     <Grid>
-        <Label x:Name="Car_Hire_lbl" Content="Car Hire for no. of days: " HorizontalAlignment="Left" Height="45" Margin="10,211,0,0" VerticalAlignment="Top" Width="140"/>
         <Label x:Name="Amend_Booking_Leave_Date_lbl" Content="Amend Check-out: " HorizontalAlignment="Left" Height="45" Margin="10,178,0,0" VerticalAlignment="Top" Width="106"/>
-        <ComboBox x:Name="Car_Hire_cmbx" HorizontalAlignment="Left" Height="25" Margin="161,215,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.5,0.5">
-            <ComboBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="2.179"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="-0.476"/>
-                </TransformGroup>
-            </ComboBox.RenderTransform>
-        </ComboBox>
         <TextBox x:Name="Amend_Booking_Date_txtbx" HorizontalAlignment="Left" Height="33" Margin="130,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
         <TextBox x:Name="Amend_Booking_Leave_Date_txtbx" HorizontalAlignment="Left" Height="33" Margin="130,178,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
         <TextBox x:Name="Cus_Address_txtbx" HorizontalAlignment="Left" Height="33" Margin="130,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>

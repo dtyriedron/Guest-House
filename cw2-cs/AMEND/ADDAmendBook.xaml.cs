@@ -20,7 +20,8 @@ namespace cw2_cs
     /// </summary>
     public partial class ADDAmendBook : Window
     {
-        public string Cus_Ref_Search = "";
+        public int Cus_Ref_Search = 0;
+        public int Book_Ref_Search = 0;
         ConnectionFacade AmendBookFacade = new ConnectionFacade();
         public ADDAmendBook()
         {
@@ -31,40 +32,31 @@ namespace cw2_cs
         {
             SqlConnection con = AmendBookFacade.Connect();
 
-            SqlCommand com = new SqlCommand("SELECT Cus_Name, Cus_Ref, Cus_Address FROM Customer WHERE Cus_Name=@Cus_Name AND Cus_Address=@Cus_Address");
+            Customer c1 = new Customer();
+            c1.Cus_Address = Cus_Address_txtbx.Text;
+            c1.Cus_Name = Cus_Name_txtbx.Text;
+            c1.Cus_Ref = Cus_Ref_Search;
 
-            string query1 = "SELECT Booking_Date, Date_Leaving FROM Booking WHERE Booking_Date=@SELECT_Booking_Date AND Date_Leaving=@SELECT_Date_Leaving";
 
-            string query2 = "UPDATE Booking SET Booking_Date=@Booking_Date, Date_Leaving=@Booking_Leave_Date, Customer_id=@Cus_Ref WHERE Customer_id=@Cus_Ref";
+            Booking b1 = new Booking();
+            b1.Booking_Date = Amend_Booking_Date_txtbx.Text;
+            b1.Date_Leaving = Amend_Booking_Leave_Date_txtbx.Text;
+            b1.Cust = c1;
+            b1.Booking_Ref = Book_Ref_Search;
 
-            com.Parameters.AddWithValue("@Cus_Address", Cus_Address_txtbx.Text);
-            com.Parameters.AddWithValue("@Cus_Name", Cus_Name_txtbx.Text);
-
-            com.CommandType = System.Data.CommandType.Text;
-            com.Connection = con;
-
-            con.Open();
-            SqlDataReader rdr = com.ExecuteReader();
-            while (rdr.Read())
+            try
             {
-                Cus_Ref_Search = rdr["Cus_Ref"].ToString();
+                c1.SelectCus();
+                b1.SelectCus();
+                b1.SelectBooking();
+                b1.AmendBook();
             }
-            rdr.Close();
-            MessageBox.Show(Cus_Ref_Search);
+            catch(SqlException except)
+            {
+                MessageBox.Show(except.Message);
+            }
 
-            com.CommandText = query1;
-            com.Parameters.AddWithValue("@SELECT_Booking_Date", Booking_Date_txtbx.Text);
-            com.Parameters.AddWithValue("@SELECT_Date_Leaving", Booking_Leave_Date_txtbx.Text);
-            com.ExecuteNonQuery();
 
-            com.CommandText = query2;
-            com.Parameters.AddWithValue("@Cus_Ref", Cus_Ref_Search);
-            com.Parameters.AddWithValue("@Booking_Date", Amend_Booking_Date_txtbx.Text);
-            com.Parameters.AddWithValue("@Booking_Leave_Date", Amend_Booking_Leave_Date_txtbx.Text);
-
-            int ralf2 = com.ExecuteNonQuery();
-            con.Close();
-            MessageBox.Show(ralf2.ToString());
         }
     }
 }

@@ -20,8 +20,8 @@ namespace cw2_cs
     /// </summary>
     public partial class ADDGuest : Window
     {
-        public string Cus_Ref_Search = "";
-        public string Book_Ref_Search = "";
+        public int Cus_Ref_Search = 0;
+        public int Book_Ref_Search = 0;
 
         ConnectionFacade ADDGuestFacade = new ConnectionFacade();
         public ADDGuest()
@@ -35,50 +35,41 @@ namespace cw2_cs
             
             SqlConnection con = ADDGuestFacade.Connect();
 
-            SqlCommand com = new SqlCommand("SELECT Cus_Ref, Cus_Name, Cus_Address FROM Customer WHERE Cus_Address=@Cus_Address AND Cus_Name=@Cus_Name");
-            
-            string query1 = "SELECT BookingRef, Booking_Date, Date_Leaving FROM Booking WHERE Booking_Date=@Booking_Date AND Date_Leaving=@Booking_Leave_Date";
+            Customer c1 = new Customer();
+            c1.Cus_Address = Cus_Address_txtbx.Text;
+            c1.Cus_Name = Cus_Name_txtbx.Text;
+            c1.Cus_Ref = Cus_Ref_Search;
 
-            string query2 = "INSERT INTO Guest_Table (Guest_Pass_Num,Guest_Name,Gus_Age, Booking_id, Customer_id) VALUES (@Guest_Pass_Num,@Guest_Name,@Gus_Age, @BookingRef, @Cus_Ref)";
+            Booking b1 = new Booking();
+            b1.Booking_Date = Booking_Date_txtbx.Text;
+            b1.Date_Leaving = Booking_Leave_Date_txtbx.Text;
+            b1.Booking_Ref = Book_Ref_Search;
+            b1.Cust = c1;
 
-            com.Parameters.AddWithValue("@Cus_Address", Cus_Address_txtbx.Text);
-            com.Parameters.AddWithValue("@Cus_Name", Cus_Name_txtbx.Text);
+            Guest g1 = new Guest();
+            g1.Guest_Name = Gus_Name_txtbx.Text;
+            g1.Gus_Age = Convert.ToInt32(Gus_Age_txtbx.Text);
+            g1.Guest_Pass_Num = Convert.ToInt32(Gus_Pass_Num_txtbx.Text);
+            g1.Cust = c1;
+            g1.Book = b1;
 
-            com.CommandType = System.Data.CommandType.Text;
-            com.Connection = con;
-
-            con.Open();
-            SqlDataReader rdr = com.ExecuteReader();
-            while (rdr.Read())
+            try
             {
-                Cus_Ref_Search = rdr["Cus_Ref"].ToString();
+                c1.SelectCus();
+                b1.SelectCus();
+                b1.SelectBooking();
+                g1.InsertGuest();
             }
-            rdr.Close();
-            MessageBox.Show(Cus_Ref_Search);
-
-            com.CommandText = query1;
-            com.Parameters.AddWithValue("@Booking_Date", Booking_Date_txtbx.Text);
-            com.Parameters.AddWithValue("@Booking_Leave_Date", Booking_Leave_Date_txtbx.Text);
-
-            SqlDataReader rdr2 = com.ExecuteReader();
-            while (rdr2.Read())
+            catch(SqlException except)
             {
-                Book_Ref_Search = rdr2["BookingRef"].ToString();
+                MessageBox.Show(except.Message);
             }
-            rdr2.Close();
-            MessageBox.Show(Book_Ref_Search);
 
-            com.CommandText = query2;
-            com.Parameters.AddWithValue("@Cus_Ref", Cus_Ref_Search);
-            com.Parameters.AddWithValue("@BookingRef", Book_Ref_Search);
-            com.Parameters.AddWithValue("@Guest_Pass_Num", Gus_Pass_Num_txtbx.Text);
-            com.Parameters.AddWithValue("@Guest_Name", Gus_Name_txtbx.Text);
-            com.Parameters.AddWithValue("@Gus_Age", Gus_Age_txtbx.Text);
-
-
-            int ralf = com.ExecuteNonQuery();
-            con.Close();
-            MessageBox.Show(ralf.ToString());
+            finally
+            {
+                con.Close();
+            }
+           
         }
     }
 }

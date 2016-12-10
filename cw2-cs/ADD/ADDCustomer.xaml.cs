@@ -22,28 +22,40 @@ namespace cw2_cs
     public partial class ADDCustomer : Window
     {
         ConnectionFacade ADDCusFacade = new ConnectionFacade();
-        
+
+        public int Cus_Ref_Search = 0;
+                
         public ADDCustomer()
         {
             InitializeComponent();
         }
 
+        
 
-       
 
         private void SAVE_btn_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection con = ADDCusFacade.Connect();
+
             
-            SqlCommand com = new SqlCommand("INSERT INTO Customer (Cus_Address,Cus_Name) VALUES (@Cus_Address,@Cus_Name)");
+            Customer c1 = new Customer();
+            c1.Cus_Address = Cus_Address_txtbx.Text;
+            c1.Cus_Name = Cus_Name_txtbx.Text;
+            c1.Cus_Ref = Cus_Ref_Search;
+
+            try
+            {
+                c1.InsertCus();
+            }
+            catch(SqlException except)
+            {
+                MessageBox.Show(except.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
             
-            com.CommandType = System.Data.CommandType.Text;
-            com.Connection = con;
-            com.Parameters.AddWithValue("@Cus_Address", Cus_Address_txtbx.Text);
-            com.Parameters.AddWithValue("@Cus_Name", Cus_Name_txtbx.Text);
-            con.Open();
-            com.ExecuteNonQuery();
-            con.Close();
         }
     }
 }

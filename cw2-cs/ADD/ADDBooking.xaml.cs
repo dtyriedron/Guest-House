@@ -21,13 +21,9 @@ namespace cw2_cs
     public partial class ADDBooking : Window
     {
         //set up string for cus ref search
-        public string Cus_Ref_Search = "";
+        public int Cus_Ref_Search = 0;
         //set up string for booking ref search
-        public string Book_Ref_Search = "";
-        //set up string for number of guests
-        public int Guest_No = 0;
-        //set up the search for guest_no
-        public string Guest_No_Search = "";
+        public int Book_Ref_Search = 0;
         //set up extra
         private bool buttonWasClicked = false;
 
@@ -53,6 +49,8 @@ namespace cw2_cs
 
         }
 
+        
+
         //saves progress and takes you to the next window
         private void SAVE_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -60,68 +58,39 @@ namespace cw2_cs
             //make new db connection
             SqlConnection con = ADDBookFacade.Connect();
 
-            //make new command which will help to check if the values for the customer name and the customer address are correct
-            SqlCommand com = new SqlCommand("SELECT Cus_Ref, Cus_Name, Cus_Address FROM Customer WHERE Cus_Address=@Cus_Address AND Cus_Name=@Cus_Name");
-            com.Parameters.AddWithValue("@Cus_Address", Cus_Address_txtbx.Text);
-            com.Parameters.AddWithValue("@Cus_Name", Cus_Name_txtbx.Text);
 
-            com.CommandType = System.Data.CommandType.Text;
-            com.Connection = con;
-            con.Open();
-            //read the cus ref
-            SqlDataReader Cus_Ref_rdr = com.ExecuteReader();
-            while (Cus_Ref_rdr.Read())
+            Customer c1 = new Customer();
+            c1.Cus_Address = Cus_Address_txtbx.Text;
+            c1.Cus_Name = Cus_Name_txtbx.Text;
+            c1.Cus_Ref = Cus_Ref_Search;
+
+
+            Booking b1 = new Booking();
+            b1.Booking_Date = Booking_Date_txtbx.Text;
+            b1.Date_Leaving = Booking_Leave_Date_txtbx.Text;
+            b1.Cust = c1;
+            b1.Booking_Ref = Book_Ref_Search;
+            b1.No_Guests = Convert.ToInt32(No_Guests_cmbobx.SelectedValue);
+
+
+            try
             {
-                Cus_Ref_Search = Cus_Ref_rdr["Cus_Ref"].ToString();
+                c1.SelectCus();
+                b1.InsertBooking();
             }
-            Cus_Ref_rdr.Close();
-            //show the cus ref
-            MessageBox.Show("Cus ref= " + Cus_Ref_Search);
-
-
-            //save all the entered values for a booking into the db
-            string INSERT_BOOK_Query = "INSERT INTO Booking (Booking_Date, Date_Leaving, Customer_id, No_Guests) VALUES (@Booking_Date, @Booking_Leave_Date, @Cus_Ref, @No_Guests)";
-            //change the text of the command so there can be a new query
-            com.CommandText = INSERT_BOOK_Query;
-            com.Parameters.AddWithValue("@Cus_Ref", Cus_Ref_Search);
-            com.Parameters.AddWithValue("@Booking_Date", Booking_Date_txtbx.Text);
-            com.Parameters.AddWithValue("@Booking_Leave_Date", Booking_Leave_Date_txtbx.Text);
-            com.Parameters.AddWithValue("@No_Guests", No_Guests_cmbobx.SelectedValue);
-            //execute the new query
-            com.ExecuteNonQuery();
-
-            //save all the entered values for a booking into the db
-            string SELECT_BOOK_Query = "SELECT Booking_Date, Date_Leaving, BookingRef, No_Guests FROM Booking WHERE Booking_Date=@SELECT_Booking_Date AND Date_Leaving=@SELECT_Booking_Leave_Date AND Customer_id=@SELECT_Cus_Ref AND No_Guests=@SELECT_No_Guests";
-            //change the text of the command so there can be a new query
-            com.CommandText = SELECT_BOOK_Query;
-            com.Parameters.AddWithValue("@SELECT_Cus_Ref", Cus_Ref_Search);
-            com.Parameters.AddWithValue("@SELECT_Booking_Date", Booking_Date_txtbx.Text);
-            com.Parameters.AddWithValue("@SELECT_Booking_Leave_Date", Booking_Leave_Date_txtbx.Text);
-            com.Parameters.AddWithValue("@SELECT_No_Guests", No_Guests_cmbobx.SelectedValue);
-
-            //read the variables need from booking
-            SqlDataReader Book_rdr = com.ExecuteReader();
-            while (Book_rdr.Read())
+            catch(SqlException except)
             {
-                Book_Ref_Search = Book_rdr["BookingRef"].ToString();
-                Guest_No_Search = Book_rdr["No_Guests"].ToString();
+                MessageBox.Show(except.Message);
             }
-            Book_rdr.Close();
-            //show the booking ref
-            MessageBox.Show("Booking ref= " + Book_Ref_Search);
-            //show the Guest_No
-            MessageBox.Show("Guest_No= " + Guest_No_Search);
-
-            //allow the user to save all the guests to the db
-            for (int i = 0; i < Int32.Parse(Guest_No_Search); i++)
+          
+            finally
             {
-                ADDGuest GuestWindow = new ADDGuest();
-                GuestWindow.ShowDialog();
+                con.Close();
             }
-
-            if(buttonWasClicked)
+            MessageBox.Show(c1.Cus_Ref.ToString());
+            if (buttonWasClicked)
             {
-             
+
 
                 //make all the booking bit invisable
                 Extra_btn.Visibility = System.Windows.Visibility.Hidden;
@@ -154,34 +123,63 @@ namespace cw2_cs
                 Dietry_Requirements_txtbx.Visibility = System.Windows.Visibility.Visible;
                 SAVE_EXTRA_btn.Visibility = System.Windows.Visibility.Visible;
 
+                MessageBox.Show("booking_ref "+ b1.Booking_Ref);
 
             }
-            con.Close();
+            for (int i = 0; i < b1.No_Guests; i++)
+            {
+                ADDGuest GuestWindow = new ADDGuest();
+                GuestWindow.ShowDialog();
+            }
+           
+
 
         }
 
         private void SAVE_EXTRA_btn_Click(object sender, RoutedEventArgs e)
         {
-            
             //make new db connection
             SqlConnection con = ADDBookFacade.Connect();
+            
+            Customer c1 = new Customer();
+            c1.Cus_Address = Cus_Address_txtbx.Text;
+            c1.Cus_Name = Cus_Name_txtbx.Text;
+            c1.Cus_Ref = Cus_Ref_Search;
 
-            //save all the entered values for a booking into the db
-            SqlCommand com = new SqlCommand("INSERT INTO Extra (Booking_id,Breakfast_No_Days,Dinner_No_Days, Car_Hire_No_Days, Car_Driver, Car_Hire_Start_Date, Car_Hire_End_Date, Dietry_Requirements) VALUES (@Book_Ref_Search, @Breakfast_No_Days, @Dinner_No_Days, @Car_Hire_No_Days, @Driver_Name, @Start_Date, @End_Date, @Dietry_Requirements)");
-            com.CommandType = System.Data.CommandType.Text;
-            com.Connection = con;
-            con.Open();
-            com.Parameters.AddWithValue("@Book_Ref_Search", Book_Ref_Search);
-            com.Parameters.AddWithValue("@Driver_Name", Car_Hire_Driver_Name_txtbx.Text);
-            com.Parameters.AddWithValue("@Start_Date", Car_Hire_Start_Date_txtbx.Text);
-            com.Parameters.AddWithValue("@End_Date", Car_Hire_End_Date_txtbx.Text);
-            com.Parameters.AddWithValue("@Dietry_Requirements", Dietry_Requirements_txtbx.Text);
-            com.Parameters.AddWithValue("@Breakfast_No_Days", Breakfast_txtbx.Text);
-            com.Parameters.AddWithValue("@Dinner_No_Days", Dinner_txtbx.Text);
-            com.Parameters.AddWithValue("@Car_Hire_No_Days", Car_Hire_txtbx.Text);
-            //execute the new query
-            com.ExecuteNonQuery();
-            con.Close();
+            Booking b1 = new Booking();
+            b1.Booking_Date = Booking_Date_txtbx.Text;
+            b1.Date_Leaving = Booking_Leave_Date_txtbx.Text;
+            b1.Cust = c1;
+            b1.Booking_Ref = Book_Ref_Search;
+            b1.No_Guests = Convert.ToInt32(No_Guests_cmbobx.SelectedValue);
+
+            Extra e1 = new Extra();
+            e1.Book = b1;
+            e1.Breakfast_No_Days = Convert.ToInt32(Breakfast_txtbx.Text);
+            e1.Dinner_No_Days = Convert.ToInt32(Dinner_txtbx.Text);
+            e1.Car_Hire_No_Days = Convert.ToInt32(Car_Hire_txtbx.Text);
+            e1.Driver_Name = Car_Hire_Driver_Name_txtbx.Text;
+            e1.Start_Date = Convert.ToDateTime(Car_Hire_Start_Date_txtbx.Text);
+            e1.End_Date = Convert.ToDateTime(Car_Hire_End_Date_txtbx.Text);
+            e1.Dietry_Requirements = Dietry_Requirements_txtbx.Text;
+
+
+
+            MessageBox.Show("book_ref " + Book_Ref_Search);
+            try
+            {
+                c1.SelectCus();
+                b1.SelectBooking();
+                e1.InsertExtra();
+            }
+            catch(SqlException except)
+            {
+                MessageBox.Show(except.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }

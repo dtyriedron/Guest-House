@@ -1,0 +1,8 @@
+C:\Users\dtd2509\Desktop\cw2-2017\UnitTest\bin\Debug\UnitTest.dll
+C:\Users\dtd2509\Desktop\cw2-2017\UnitTest\bin\Debug\UnitTest.pdb
+C:\Users\dtd2509\Desktop\cw2-2017\UnitTest\bin\Debug\cw2-cs.exe
+C:\Users\dtd2509\Desktop\cw2-2017\UnitTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\dtd2509\Desktop\cw2-2017\UnitTest\bin\Debug\cw2-cs.pdb
+C:\Users\dtd2509\Desktop\cw2-2017\UnitTest\obj\Debug\UnitTest.csprojResolveAssemblyReference.cache
+C:\Users\dtd2509\Desktop\cw2-2017\UnitTest\obj\Debug\UnitTest.dll
+C:\Users\dtd2509\Desktop\cw2-2017\UnitTest\obj\Debug\UnitTest.pdb

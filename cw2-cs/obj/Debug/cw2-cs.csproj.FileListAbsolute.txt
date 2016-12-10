@@ -56,9 +56,9 @@ C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\DEL\DELCustomer.g.cs
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\DEL\DELCustomer.baml
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\DEL\DELGuest.g.cs
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\DEL\DELGuest.baml
-C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\Invoice.g.cs
-C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\Invoice.baml
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\AMEND\ADDAmendExtra.g.cs
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\AMEND\ADDAmendExtra.baml
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\DEL\DELExtra.g.cs
 C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\DEL\DELExtra.baml
+C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADD\Invoice.g.cs
+C:\Users\dtd2509\Desktop\cw2-2017\cw2-cs\obj\Debug\ADD\Invoice.baml
